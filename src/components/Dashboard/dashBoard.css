@@ -1,0 +1,19 @@
+.body-content{
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-gap: 0px;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 64px;
+    width: 100vw;
+    position:fixed;
+    height:calc(100vh - 64);
+    top:0;
+    left:0
+}
+/* changes the input outline */
+input:focus{
+    outline: none;
+  }
+  
+  

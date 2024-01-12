@@ -1,0 +1,22 @@
+.loginDiv {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.form-control:focus{
+    border-color: #ced4da; /* Set your desired border color on focus */
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.4); /* Remove the box-shadow on focus */
+    outline: solid rgba(0,0,0,0.4) 1px; /* Remove the default outline */
+}
+
+img{
+    width:30px;
+    height:30px
+}
+
+.input-group-text{
+    width: 20;
+    /* padding:2px 4px 2px 4px; */
+}
