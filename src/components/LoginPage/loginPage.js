@@ -4,7 +4,9 @@ import "./loginPage.css"
 import user from "./images/user.png"
 import eyeOn from "./images/eyeOn.png"
 import eyeOff from "./images/eyeOff.png"
-import axios from 'axios';
+import config from "../config"
+import {redirect} from 'react-router-dom'
+
 
 const LoginPage = ()=>{
     
@@ -29,38 +31,63 @@ const LoginPage = ()=>{
         console.log(username,password)
         
         try {
-            // const dataToSend = {
-            //   username: username,
-            //   password: password
-            // };
-      
+            const dataToSend = {
+              email: username,
+              password: password
+            };
+            
             // Make a POST request to your Express backend
-            const response = await fetch('http://localhost:3001/login', {
+            const response = await fetch(`${config.server.hostname}:${config.server.port}${config.apiKeys.login}`, {
                 method: 'POST',
                 headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json', 
                 },
-                body: JSON.stringify({
-                username: username,
-                password: password
-                }),
+                body: JSON.stringify(dataToSend),
             });
-            console.log(response);
-            if(response.ok){
-                const responseData = await response.json();
-                console.log(responseData.message)
-            }
+      
+            // Handle the response from the backend
+            if (response.ok) {
+
+                const data = await response.json();
+                console.log(data)
+                const auth_response = await fetch(`${config.server.hostname}:${config.server.port}${config.apiKeys.authenticate}`, {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `${data.token}`
+                    }                
+                    })
+                    if (auth_response.ok) {
+                        const auth_data = await auth_response.json();
+                        if (auth_data.message){
+                            localStorage.setItem('token', data.token)
+                            localStorage.setItem('uid', data.uid)
+                        }
+                      } else {
+                        console.error(`HTTP error! Status: ${response.status}`);
+                      }
             
+            } else {
+                console.error('Error:', response.statusText);
+            }
             
           } catch (error) {
             // Handle errors
-            console.log('Error sending data:', error.response.status);
-            // You can display an error message or handle errors accordingly
+            console.error('Error:', error.message);
+            
           }
 
         }
     
+    const isAuthenticated = () => {
+        const token = localStorage.getItem("token");
+        return token !== null && token !== undefined;
+        };
+    
 
+    if (isAuthenticated()){
+        
+    }
+        
     return(
         <div className="loginDiv">
             <form onSubmit={handleForm} className="p-3 border border-1 rounded d-flex flex-column" style={{width:320}}>
@@ -72,7 +99,7 @@ const LoginPage = ()=>{
                     <input 
                         type="text" 
                         className="form-control" 
-                        placeholder="Username" 
+                        placeholder="Email" 
                         aria-label="Username" 
                         aria-describedby="basic-addon1" 
                         onChange={(e)=>setUsername(e.target.value)} 

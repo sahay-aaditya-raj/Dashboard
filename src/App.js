@@ -11,14 +11,18 @@ import { DashBoard } from './components/Dashboard/dashboard';
 
 // LoginPage
 import LoginPage from './components/LoginPage/loginPage';
-import ProtectedComponent from './components/LoginPage/protected';
+
+// Add Tenant User
+import TenantUser from './components/TenantUser/TenantUser';
 
 
 
 function App() {
 
+  
+
+
   function MyComponent() {
-    
   
     return (
       <div>
@@ -31,10 +35,11 @@ function App() {
     <>
     <NavBar/>
     <Routes>
-      <Route path="/dashboard" exact element={<h1 style={{margin:50}}><MyComponent/></h1>}/>
-      <Route path="/" element={<DashBoard/>}/>
+      <Route path="/" exact element={<h1 style={{margin:50}}><MyComponent/></h1>}/>
+      <Route path="/dashboard" element={<DashBoard/>}/>
       <Route path="/login" element={<LoginPage/>}/>
-      <Route path="/protected" element={<ProtectedComponent/>}/>
+      {/* <Route path="/protected" element={<ProtectedComponent/>}/> */}
+      <Route path='/add-tenant-user' element={<TenantUser/>}/>
       <Route path="/*" element={<LoginPage/>}/>
     </Routes>
     </>

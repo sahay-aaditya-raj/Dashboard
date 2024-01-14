@@ -16,7 +16,7 @@ export function SideBarLg(){
         <div className="d-none p-0 d-lg-block bg-dark text-light d-flex flex-column">
           <div>
             <SideBarLinksLg text='Dashboard' link='#'/>
-            <SideBarLinksLg text='Groups' link='#'/>
+            <SideBarLinksLg text='Add Users' link='/add-tenant-user'/>
             <SideBarLinksLg text='User' link='#'/>
             <SideBarLinksLg text='Entrys' link='#'/>
             <SideBarLinksLg text='Parts' link='#'/>
@@ -32,7 +32,7 @@ export function SideBarSm(){
         <div className="d-block p-0 d-lg-none bg-dark text-light d-flex flex-column">
             <div>
             <SideBarLinksSm img={dashboardImg} text="Dashboard" link='#'/>
-            <SideBarLinksSm img={users} text='Groups' link='#'/>
+            <SideBarLinksSm img={users} text='Add Users' link='/add-tenant-user'/>
             <SideBarLinksSm img={user} text='User' link='#'/>
             <SideBarLinksSm img={entrys} text='Entrys' link='#'/>
             <SideBarLinksSm img={parts} text='Parts' link='#'/>

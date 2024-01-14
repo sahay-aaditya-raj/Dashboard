@@ -1,6 +1,7 @@
 // NavBar Sorting
 // Sorts the Data of DataComponents
 
+
 export function NavBarUtilsLg(){
     return(
         <div className="d-none d-lg-block text-center">

@@ -4,15 +4,15 @@ import { Line } from 'rc-progress';
 
 
 // Data Component is the graph, the bar and the title of the Information
-const DataComponent = ({name, value})=>{
+const DataComponent = ({data})=>{
     return(
         <div style={{width:300}}>
         <div className='p-2 shadow rounded m-2'>
             <div className='text-center fs-5 text-light rounded' style={{backgroundColor:'rgb(29, 26, 40)'}}>
-                {name}<hr/>
+                {data}<hr/>
             </div>
             <GaugeComponent
-            value={33}
+            value={data}
             type="semicircle"
             arc={{
                 cornerRadius:5,
@@ -53,12 +53,12 @@ const DataComponent = ({name, value})=>{
             />
             <div style={{position:'relative'}}>
                 <Line 
-                percent={50}
+                percent={60}
                 strokeWidth={8}
                 trailWidth={8}
                 />
                 <div className="fs-5" style={{position:'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -47%)'}}>
-                <b>{value}</b>
+                <b>500/100</b>
                 </div>
             </div>
             
