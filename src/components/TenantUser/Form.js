@@ -1,6 +1,6 @@
 import { useState } from "react";
 import config from "../config";
-import {redirect} from 'react-router-dom'
+
 const TenantForm = ()=>{
 
     let [name, setName] = useState('')
@@ -23,7 +23,7 @@ const TenantForm = ()=>{
         try{
             let adminid = localStorage.getItem('uid')
             if(!adminid){
-                return redirect('/login')
+                window.location.href = "/login"
             }
             if(!role){
                 alert('Select Role')

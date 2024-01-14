@@ -1,4 +1,4 @@
-import { redirect } from 'react-router-dom';
+import {Navigate} from 'react-router-dom'
 import TenantForm from './Form'
 
 const isAuthenticated = () => {
@@ -13,7 +13,7 @@ const TenantUser = ()=>{
         return <TenantForm/>;
       } else {
         // Redirect to the login page or show an access denied message
-        return redirect("/login");
+        return <Navigate to='/login'/>
       }
 }
 

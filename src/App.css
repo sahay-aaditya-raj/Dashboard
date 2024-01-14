@@ -4,7 +4,13 @@ body, html{
   max-height:100vh;
   background-color: rgb(248, 255, 253);
 }
-
+a{
+  text-decoration: none;
+  color:white;
+}
+a:hover{
+  color:#bebebe
+}
 
 
 /* ScrollBar Designing */

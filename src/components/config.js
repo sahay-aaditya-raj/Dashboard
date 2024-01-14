@@ -6,7 +6,8 @@ const config = {
     apiKeys: {
       login: '/api/login',
       authenticate: '/api/authenticate',
-      addTenantUser: '/api/add-tenant-user'
+      addTenantUser: '/api/add-tenant-user',
+      addDevice: '/api/add-device'
     }
   };
 

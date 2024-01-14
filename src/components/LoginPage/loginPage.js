@@ -5,7 +5,9 @@ import user from "./images/user.png"
 import eyeOn from "./images/eyeOn.png"
 import eyeOff from "./images/eyeOff.png"
 import config from "../config"
-import {redirect} from 'react-router-dom'
+
+
+
 
 
 const LoginPage = ()=>{
@@ -49,7 +51,6 @@ const LoginPage = ()=>{
             if (response.ok) {
 
                 const data = await response.json();
-                console.log(data)
                 const auth_response = await fetch(`${config.server.hostname}:${config.server.port}${config.apiKeys.authenticate}`, {
                     method: "GET",
                     headers: {
@@ -61,6 +62,7 @@ const LoginPage = ()=>{
                         if (auth_data.message){
                             localStorage.setItem('token', data.token)
                             localStorage.setItem('uid', data.uid)
+                            window.location.href = "/dashboard"
                         }
                       } else {
                         console.error(`HTTP error! Status: ${response.status}`);
@@ -78,15 +80,6 @@ const LoginPage = ()=>{
 
         }
     
-    const isAuthenticated = () => {
-        const token = localStorage.getItem("token");
-        return token !== null && token !== undefined;
-        };
-    
-
-    if (isAuthenticated()){
-        
-    }
         
     return(
         <div className="loginDiv">
