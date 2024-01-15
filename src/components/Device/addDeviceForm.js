@@ -7,6 +7,8 @@ const DeviceForm = ()=>{
     let [lat, setLat] = useState('')
     let [longi, setLongi] = useState('')
     let [name, setName] = useState('')
+    let [min, setMin] = useState('0')
+    let [max, setMax] = useState('0')
 
 
     const handleForm = async (e)=>{
@@ -23,7 +25,9 @@ const DeviceForm = ()=>{
                 lat: lat,
                 longi: longi,
                 name: name,
-                uid: adminid
+                uid: adminid,
+                min_value:min,
+                max_value:max
             }
 
             const response = await fetch(`${config.server.hostname}:${config.server.port}${config.apiKeys.addDevice}`, {
@@ -86,6 +90,20 @@ const DeviceForm = ()=>{
                 <label htmlFor="lon" className="col-sm-3 col-form-label">Longitude:</label>
                 <div className="col-sm-9">
                   <input type="text" className="form-control" id="lon" name="lon" onChange={(e)=>setLongi(e.target.value)} />
+                </div>
+              </div>
+
+              <div className="mb-3 row">
+                <label htmlFor="min" className="col-sm-3 col-form-label">Minimum Value:</label>
+                <div className="col-sm-9">
+                  <input type="text" className="form-control" id="min" value='0' name="min" onChange={(e)=>setMin(e.target.value)} />
+                </div>
+              </div>
+
+              <div className="mb-3 row">
+                <label htmlFor="max" className="col-sm-3 col-form-label">Maximum Value:</label>
+                <div className="col-sm-9">
+                  <input type="text" className="form-control" id="max" name="max" value='0' onChange={(e)=>setMax(e.target.value)} />
                 </div>
               </div>
     

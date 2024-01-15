@@ -1,5 +1,6 @@
-import DeviceForm from "./addDeviceForm";
 import { Navigate } from 'react-router-dom';
+import Devices from './Devices';
+
 
 const isAuthenticated = () => {
     const token = localStorage.getItem("token");
@@ -7,16 +8,15 @@ const isAuthenticated = () => {
   };
   
 
-const AddDevice = ()=>{
+const DevicesList = ()=>{
     if (!isAuthenticated()) {
         // Redirect to login
         return <Navigate to='/login'/>
-      } else {
-        
-        
-        return <DeviceForm/>;
-      }
+    }
+    else{
+        return <Devices/>;
+    }
+      
 }
 
-
-export default AddDevice
+export default DevicesList;

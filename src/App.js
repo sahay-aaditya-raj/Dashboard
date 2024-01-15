@@ -20,6 +20,9 @@ import TenantUser from './components/TenantUser/TenantUser';
 import AddDevice from './components/Device/addDevice';
 
 
+// Get Devices
+import DevicesList from './components/Device/getDevices';
+
 function App() {
 
   
@@ -43,6 +46,7 @@ function App() {
       <Route path="/login" element={<LoginUser/>}/>
       <Route path='/add-tenant-user' element={<TenantUser/>}/>
       <Route path='/add-device' element={<AddDevice/>}/>
+      <Route path='/get-devices' element={<DevicesList/>}/>
       <Route path="/*" element={<LoginUser/>}/>
     </Routes>
     </>
