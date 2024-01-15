@@ -9,7 +9,6 @@ const EditDataComponent = ({data})=>{
     const [max, setMax] = useState('')
     const [sensorValue, setSensorValue] = useState('')
     const [todaySensorValue, setTodaySensorValue] = useState('')
-    const [changeMax, setChangeMax] = useState('')
 
     useEffect(()=>{
         // max value -----------------
@@ -102,7 +101,7 @@ const EditDataComponent = ({data})=>{
                         headers: {
                         'Content-Type': 'application/json',
                         'device_id': data.device_id,
-                        'max_value': changeMax
+                        'max_value': max
                         }
                     });
             
@@ -127,10 +126,11 @@ const EditDataComponent = ({data})=>{
             </div>
             <div className='px-3 pt-2'>
                 <div className="input-group mb-3" >
-                    <span className="input-group-text" style={{width:'50%'}}>Max Value</span>
-                    <input type="text" style={{width:'50%'}} className="form-control" 
+                    <span className="input-group-text">Max Value</span>
+                    <input type="text" className="form-control" 
                     value={max} 
-                    onChange={(e)=>setChangeMax(e.target.value)}/>
+                    onChange={(e)=>setMax(e.target.value)}/>
+                    <button className="input-group-text" onClick={changeButton}>Change</button>
                 </div>
                 <div className="input-group mb-3">
                     <span className="input-group-text" style={{width:'50%'}}>Today's Value</span>
