@@ -129,10 +129,24 @@ const DataComponent = ({data})=>{
                 }}
             
             />
-            <div>
-                Max: {max}<br/>
-                Count: {sensorValue.count}<br/>
-                Today's Value: {todaySensorValue}
+            
+            <div className='px-3 pt-2'>
+                <div className="input-group mb-1" >
+                    <span className="input-group-text" style={{width:'50%'}}>Max Value:</span>
+                    <span className="input-group-text" style={{width:'50%'}}>{max}</span>                   
+                </div>
+                <div className="input-group mb-1">
+                    <span className="input-group-text" style={{width:'50%'}}>Today's Value</span>
+                    <span className="input-group-text" style={{width:'50%'}}>{todaySensorValue}</span>
+                </div>
+                <div className="input-group mb-1" >
+                    <span className="input-group-text" style={{width:'50%'}}>Count</span>
+                    <span className="input-group-text" style={{width:'50%'}}>{sensorValue.count}</span>
+                </div>
+                <div className="input-group mb-1">
+                    <span className="input-group-text" style={{width:'30%'}}>Dev_Id</span>
+                    <span className="input-group-text" style={{width:'70%'}}>{data.device_id}</span>
+                </div>
             </div>
             {/* <div style={{position:'relative'}}>
                 <Line 

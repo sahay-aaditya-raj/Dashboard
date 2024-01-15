@@ -49,7 +49,7 @@ const Devices = ()=>{
         }
         getData()
     },[uid])
-    console.log(devices)
+    
 
 
     return(
@@ -61,7 +61,7 @@ const Devices = ()=>{
                 </div>
                 <div>
                 <div className="pb-5" style={{overflowY: 'scroll', height:'calc(100vh - 50px)',}}>
-                <div className='d-flex mt-2 flex-wrap'>
+                <div className='d-flex mt-2 flex-wrap justify-content-lg-start justify-content-center'>
                 {devices.length<=0 ? (<h1>Loading...</h1>):(
                     <>
                     {devices.map((val, id)=>{
