@@ -10,7 +10,7 @@ const isAuthenticated = () => {
 const LoginUser = ()=>{
     if (isAuthenticated()) {
         // Redirect to Dashboard
-        return <Navigate to='/dashboard'/>
+        return <Navigate to='/get-devices'/>
       } else {
         // Redirect to the login page
         

@@ -14,8 +14,8 @@ export function NavBar(){
             </h3>
             
             <div className='d-flex justify-content-end text-light text-end pe-3 p-2 fs-lg-5 align-items-center'>
-                <div>Admin
-                </div>
+                <Link title="Click me to Logout" to="/logout">Admin
+                </Link>
             </div>
         </div>
         

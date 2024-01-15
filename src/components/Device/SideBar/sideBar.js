@@ -15,12 +15,12 @@ export function SideBarLg(){
     return(
         <div className="d-none p-0 d-lg-block bg-dark text-light d-flex flex-column">
           <div>
-            <SideBarLinksLg text='Dashboard' link='#'/>
+            <SideBarLinksLg text='Dashboard' link='/get-devices'/>
             <SideBarLinksLg text='Add Users' link='/add-tenant-user'/>
-            <SideBarLinksLg text='User' link='#'/>
-            <SideBarLinksLg text='Entrys' link='#'/>
-            <SideBarLinksLg text='Parts' link='#'/>
-            <SideBarLinksLg text='Requirements' link='#'/>
+            {/* <SideBarLinksLg text='User' link='#'/> */}
+            <SideBarLinksLg text='Add Device' link='/add-device'/>
+            <SideBarLinksLg text='Edit Devices' link='/edit-devices'/>
+            {/* <SideBarLinksLg text='Requirements' link='#'/> */}
           </div>
         </div>
     )
@@ -31,12 +31,12 @@ export function SideBarSm(){
     return(
         <div className="d-block p-0 d-lg-none bg-dark text-light d-flex flex-column">
             <div>
-            <SideBarLinksSm img={dashboardImg} text="Dashboard" link='#'/>
+            <SideBarLinksSm img={dashboardImg} text="Dashboard" link='/get-devices'/>
             <SideBarLinksSm img={users} text='Add Users' link='/add-tenant-user'/>
-            <SideBarLinksSm img={user} text='User' link='#'/>
-            <SideBarLinksSm img={entrys} text='Entrys' link='#'/>
-            <SideBarLinksSm img={parts} text='Parts' link='#'/>
-            <SideBarLinksSm img={requirements} text='Requiremets' link='#'/>
+            {/* <SideBarLinksSm img={user} text='User' link='#'/> */}
+            <SideBarLinksSm img={parts} text='Add Device' link='/add-device'/>
+            <SideBarLinksSm img={entrys} text='Edit Devices' link='/edit-devices'/>
+            {/* <SideBarLinksSm img={requirements} text='Requiremets' link='#'/> */}
             </div>
         </div>
     )

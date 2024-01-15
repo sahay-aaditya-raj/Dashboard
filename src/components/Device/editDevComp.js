@@ -1,14 +1,15 @@
-import GaugeComponent from 'react-gauge-component'
+
 // import { Line } from 'rc-progress';
 import config from '../config';
 import { useState, useEffect } from 'react';
 
-// Data Component is the graph, the bar and the title of the Information
-const DataComponent = ({data})=>{
+
+const EditDataComponent = ({data})=>{
 
     const [max, setMax] = useState('')
     const [sensorValue, setSensorValue] = useState('')
     const [todaySensorValue, setTodaySensorValue] = useState('')
+    const [changeMax, setChangeMax] = useState('')
 
     useEffect(()=>{
         // max value -----------------
@@ -93,61 +94,62 @@ const DataComponent = ({data})=>{
     todaySensorValue(data.device_id)
     },[])
 
+    const changeButton = ()=>{
+            const putData = async ()=>{
+                try{
+                    const response = await fetch(`${config.server.hostname}:${config.server.port}${config.apiKeys.getMax}`, {
+                        method: 'PUT',
+                        headers: {
+                        'Content-Type': 'application/json',
+                        'device_id': data.device_id,
+                        'max_value': changeMax
+                        }
+                    });
+            
+                    if (response.status===200){
+                        alert('Max value changed!')
+                    } else{
+                        alert('Something Went Wrong')
+                    }
+                } catch{
+                    alert('FrontEnd Error')
+                }
+            }
+            putData()
+        
+    }
 
     return(
         <div style={{width:300}}>
         <div className='p-2 shadow rounded m-2'>
-            <div className='text-center fs-5 text-light rounded' style={{backgroundColor:'rgb(29, 26, 40)'}}>
+            <div className='d-flex text-start fs-5 text-light rounded ps-3 align-content-center' style={{backgroundColor:'rgb(29, 26, 40)'}}>
                 {data.name}<hr/>
             </div>
-            <GaugeComponent
-            className='d-flex'
-            value={(sensorValue.count/max)*100}
-            type="semicircle"
-            arc={{
-                nbSubArcs: 3,
-                colorArray: ['#5BE12C', '#F5CD19', '#EA4228'],
-                width: 0.2,
-                padding: 0.0001
-              }}
-            labels={{
-                valueLabel:{
-                    formatTextValue:(e)=> `${e} %`,
-                    style:{fontSize:35,fill:'rgb(47 40 45)',textShadow:'none'}
-            },
-                tickLabels: {
-                type: 'outer',
-                ticks: [{value:50}],
-                defaultTickValueConfig:{
-                    formatTextValue: (value) => `${value}`,
-                },
-                }
-            }}
-            pointer={{
-                type:'arrow',
-                width:15,
-                }}
-            
-            />
-            <div>
-                Max: {max}<br/>
-                Count: {sensorValue.count}<br/>
-                Today's Value: {todaySensorValue}
-            </div>
-            {/* <div style={{position:'relative'}}>
-                <Line 
-                percent={60}
-                strokeWidth={8}
-                trailWidth={8}
-                />
-                <div className="fs-5" style={{position:'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -47%)'}}>
-                <b>500/{max}</b>
+            <div className='px-3 pt-2'>
+                <div className="input-group mb-3" >
+                    <span className="input-group-text" style={{width:'50%'}}>Max Value</span>
+                    <input type="text" style={{width:'50%'}} className="form-control" 
+                    value={max} 
+                    onChange={(e)=>setChangeMax(e.target.value)}/>
                 </div>
-            </div> */}
+                <div className="input-group mb-3">
+                    <span className="input-group-text" style={{width:'50%'}}>Today's Value</span>
+                    <span className="input-group-text" style={{width:'50%'}}>{todaySensorValue}</span>
+                </div>
+                <div className="input-group mb-3" >
+                    <span className="input-group-text" style={{width:'50%'}}>Count</span>
+                    <span className="input-group-text" style={{width:'50%'}}>{sensorValue.count}</span>
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" style={{width:'30%'}}>Dev_Id</span>
+                    <span className="input-group-text" style={{width:'70%'}}>{data.device_id}</span>
+                </div>
+            </div>
+            
             
         </div>
         </div>
     )
 }
 
-export default DataComponent;
+export default EditDataComponent;

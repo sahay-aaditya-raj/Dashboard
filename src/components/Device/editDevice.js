@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import config from '../config';
 // data component
-import DataComponent from './dataComponent';
+import EditDataComponent from './editDevComp';
 
 // SideBar
 import {SideBarLg, SideBarSm} from './SideBar/sideBar';
-
+import { Navigate } from 'react-router-dom';
 // Navbar Utils
 // import { NavBarUtilsLg, NavBarUtilsMd, NavBarUtilsXs } from './NavBar/navBarUtils';
 
@@ -65,7 +65,7 @@ const Devices = ()=>{
                 {devices.length<=0 ? (<h1>Loading...</h1>):(
                     <>
                     {devices.map((val, id)=>{
-                        return <DataComponent key={id} data={val}/>
+                        return <EditDataComponent key={id} data={val}/>
                     })}
                     </>
                     )}
@@ -78,4 +78,18 @@ const Devices = ()=>{
 }
 
 
-export default Devices
+const isAuthenticated = () => {
+    const token = localStorage.getItem("token");
+    return token !== null && token !== undefined;
+  };
+const EditDevices = ()=>{
+    if (!isAuthenticated()) {
+        // Redirect to Dashboard
+        return <Navigate to='/login'/>
+      } else {
+        // Redirect to the login page
+        
+        return <Devices/>;
+      }
+}
+export default EditDevices
