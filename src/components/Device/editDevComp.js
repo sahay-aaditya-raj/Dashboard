@@ -2,7 +2,7 @@
 // import { Line } from 'rc-progress';
 import config from '../config';
 import { useState, useEffect } from 'react';
-
+import edit from './edit.png'
 
 const EditDataComponent = ({data})=>{
 
@@ -27,9 +27,9 @@ const EditDataComponent = ({data})=>{
             if(response.status===200){
                 setMax(data1.max_value)
             } else if(response.status===404){
-                alert(data1['error'])
+                // alert(data1['error'])
             } else{
-                alert(data1['error'])
+                // alert(data1['error'])
             }
             
     
@@ -55,9 +55,9 @@ const EditDataComponent = ({data})=>{
             if(response.status===200){
                 setSensorValue(data2['device_id'])
             } else if(response.status===404){
-                alert(data2['error'])
+                // alert(data2['error'])
             } else{
-                alert(data2['error'])
+                // alert(data2['error'])
             }
     
         } catch{
@@ -107,9 +107,9 @@ const EditDataComponent = ({data})=>{
                     });
             
                     if (response.status===200){
-                        alert('Max value changed!')
+                        // alert('Max value changed!')
                     } else{
-                        alert('Something Went Wrong')
+                        // alert('Something Went Wrong')
                     }
                 } catch{
                     alert('FrontEnd Error')
@@ -120,25 +120,21 @@ const EditDataComponent = ({data})=>{
     }
 
     return(
-        <div style={{width:300}}>
-        <div className='p-2 shadow rounded m-2'>
-            <div className='d-flex text-start fs-5 px-3 text-light rounded align-content-center' style={{backgroundColor:'rgb(29, 26, 40)'}}>
-            <div className="input-group" >
-                    <span className="input-group-text">Name:</span>
+        <div style={{width:320}}>
+        <div className='p-2 px-1  shadow rounded m-2'>
+        <div className="input-group mb-3 px-3" >
                     <input type="text" className="form-control" 
                     value={name} 
                     onChange={(e)=>setName(e.target.value)}/>
-                    <button className="input-group-text">Change</button>
+                    <button className="input-group-text px-2" ><img src={edit} alt="Chg"/></button>
                 </div>
-                <hr/>
-            </div>
-            <div className='px-3 pt-2'>
+            <div className='px-3'>
                 <div className="input-group mb-3" >
-                    <span className="input-group-text">Max Value</span>
+                    <span className="input-group-text px-2">Max Value</span>
                     <input type="text" className="form-control" 
                     value={max} 
                     onChange={(e)=>setMax(e.target.value)}/>
-                    <button className="input-group-text" onClick={changeButton}>Change</button>
+                    <button className="input-group-text px-2" onClick={changeButton}><img src={edit} alt="Chg"/></button>
                 </div>
                 <div className="input-group mb-3">
                     <span className="input-group-text" style={{width:'50%'}}>Today's Value</span>
@@ -148,7 +144,7 @@ const EditDataComponent = ({data})=>{
                     <span className="input-group-text" style={{width:'50%'}}>Count</span>
                     <span className="input-group-text" style={{width:'50%'}}>{sensorValue.count}</span>
                 </div>
-                <div className="input-group mb-3">
+                <div className="input-group">
                     <span className="input-group-text" style={{width:'30%'}}>Dev_Id</span>
                     <span className="input-group-text" style={{width:'70%'}}>{data.device_id}</span>
                 </div>

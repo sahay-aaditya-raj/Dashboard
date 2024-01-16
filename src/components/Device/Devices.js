@@ -34,10 +34,10 @@ const Devices = ()=>{
                 const data = await response.json();
         
                 if (response.status===401){
-                    alert(data['error'])
+                    // alert(data['error'])
                 }
                 if (response.status===500){
-                    alert(data['error'])
+                    // alert(data['error'])
                 }
                 if (response.status===200){
                     setDevices(data)

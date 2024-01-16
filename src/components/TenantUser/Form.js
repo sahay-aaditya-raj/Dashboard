@@ -49,12 +49,12 @@ const TenantForm = ()=>{
 
             const data = await response.json();
             
-            if (response.status === 300 && data.hasOwnProperty('accessDenied')){
-                alert(data['accessDenied'])
-            }
-            if (response.status === 300 && data.hasOwnProperty('emailExist')){
-                alert(data['emailExist'])
-            }
+            // if (response.status === 300 && data.hasOwnProperty('accessDenied')){
+            //     alert(data['accessDenied'])
+            // }
+            // if (response.status === 300 && data.hasOwnProperty('emailExist')){
+            //     alert(data['emailExist'])
+            // }
             if (response.status === 500){
                 alert('Something Went Wrong From Backend')
             }

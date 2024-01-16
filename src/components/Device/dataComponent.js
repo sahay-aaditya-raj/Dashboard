@@ -26,9 +26,11 @@ const DataComponent = ({data})=>{
             if(response.status===200){
                 setMax(data1.max_value)
             } else if(response.status===404){
-                alert(data1['error'])
+                // alert(data1['error'])
+                setMax(0)
             } else{
-                alert(data1['error'])
+                // alert(data1['error'])
+                setMax(0)
             }
             
     
@@ -54,9 +56,11 @@ const DataComponent = ({data})=>{
             if(response.status===200){
                 setSensorValue(data2['device_id'])
             } else if(response.status===404){
-                alert(data2['error'])
+                // alert(data2['error'])
+                setSensorValue(0)
             } else{
-                alert(data2['error'])
+                // alert(data2['error'])
+                setSensorValue(0)
             }
     
         } catch{
@@ -95,10 +99,10 @@ const DataComponent = ({data})=>{
 
 
     return(
-        <div style={{width:300}}>
+        <div style={{width:320}}>
         <div className='p-2 shadow rounded m-2'>
             <div className='text-center fs-5 text-light rounded' style={{backgroundColor:'rgb(29, 26, 40)'}}>
-                {data.name}<hr/>
+                {data.name}
             </div>
             <GaugeComponent
             className='d-flex'
@@ -132,20 +136,20 @@ const DataComponent = ({data})=>{
             
             <div className='px-3 pt-2'>
                 <div className="input-group mb-1" >
-                    <span className="input-group-text" style={{width:'50%'}}>Max Value:</span>
-                    <span className="input-group-text" style={{width:'50%'}}>{max}</span>                   
+                    <span className="input-group-text px-1" style={{width:'50%'}}>Max Value:</span>
+                    <span className="input-group-text px-1" style={{width:'50%'}}>{max}</span>                   
                 </div>
                 <div className="input-group mb-1">
-                    <span className="input-group-text" style={{width:'50%'}}>Today's Value</span>
-                    <span className="input-group-text" style={{width:'50%'}}>{todaySensorValue}</span>
+                    <span className="input-group-text px-1" style={{width:'50%'}}>Today's Count</span>
+                    <span className="input-group-text px-1" style={{width:'50%'}}>{todaySensorValue}</span>
                 </div>
                 <div className="input-group mb-1" >
-                    <span className="input-group-text" style={{width:'50%'}}>Count</span>
-                    <span className="input-group-text" style={{width:'50%'}}>{sensorValue.count}</span>
+                    <span className="input-group-text px-1" style={{width:'50%'}}>Total Count</span>
+                    <span className="input-group-text px-1" style={{width:'50%'}}>{sensorValue.count}</span>
                 </div>
-                <div className="input-group mb-1">
-                    <span className="input-group-text" style={{width:'30%'}}>Dev_Id</span>
-                    <span className="input-group-text" style={{width:'70%'}}>{data.device_id}</span>
+                <div className="input-group">
+                    <span className="input-group-text px-1" style={{width:'30%'}}>Dev_Id</span>
+                    <span className="input-group-text px-1" style={{width:'70%'}}>{data.device_id}</span>
                 </div>
             </div>
             {/* <div style={{position:'relative'}}>

@@ -62,6 +62,7 @@ const LoginPage = ()=>{
                         if (auth_data.message){
                             localStorage.setItem('token', data.token)
                             localStorage.setItem('uid', data.uid)
+                            localStorage.setItem('role', data.type)
                             window.location.href = "/dashboard"
                         }
                       } else {
