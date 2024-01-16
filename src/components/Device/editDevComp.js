@@ -9,6 +9,7 @@ const EditDataComponent = ({data})=>{
     const [max, setMax] = useState('')
     const [sensorValue, setSensorValue] = useState('')
     const [todaySensorValue, setTodaySensorValue] = useState('')
+    const [name, setName] = useState(data.name)
 
     useEffect(()=>{
         // max value -----------------
@@ -121,8 +122,15 @@ const EditDataComponent = ({data})=>{
     return(
         <div style={{width:300}}>
         <div className='p-2 shadow rounded m-2'>
-            <div className='d-flex text-start fs-5 text-light rounded ps-3 align-content-center' style={{backgroundColor:'rgb(29, 26, 40)'}}>
-                {data.name}<hr/>
+            <div className='d-flex text-start fs-5 px-3 text-light rounded align-content-center' style={{backgroundColor:'rgb(29, 26, 40)'}}>
+            <div className="input-group" >
+                    <span className="input-group-text">Name:</span>
+                    <input type="text" className="form-control" 
+                    value={name} 
+                    onChange={(e)=>setName(e.target.value)}/>
+                    <button className="input-group-text">Change</button>
+                </div>
+                <hr/>
             </div>
             <div className='px-3 pt-2'>
                 <div className="input-group mb-3" >

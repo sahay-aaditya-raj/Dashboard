@@ -75,7 +75,7 @@ const DeviceForm = ()=>{
               <div className="mb-3 row">
                 <label htmlFor="devId" className="col-sm-3 col-form-label">Device Id:</label>
                 <div className="col-sm-9">
-                  <input type="email" className="form-control" id="devId" name="devId" onChange={(e)=>setDeviceId(e.target.value)} />
+                  <input type="text" className="form-control" id="devId" name="devId" onChange={(e)=>setDeviceId(e.target.value)} />
                 </div>
               </div>
     
@@ -96,14 +96,14 @@ const DeviceForm = ()=>{
               <div className="mb-3 row">
                 <label htmlFor="min" className="col-sm-3 col-form-label">Minimum Value:</label>
                 <div className="col-sm-9">
-                  <input type="text" className="form-control" id="min" value='0' name="min" onChange={(e)=>setMin(e.target.value)} />
+                  <input type="text" className="form-control" id="min" value={min} name="min" onChange={(e)=>setMin(e.target.value)} />
                 </div>
               </div>
 
               <div className="mb-3 row">
                 <label htmlFor="max" className="col-sm-3 col-form-label">Maximum Value:</label>
                 <div className="col-sm-9">
-                  <input type="text" className="form-control" id="max" name="max" value='0' onChange={(e)=>setMax(e.target.value)} />
+                  <input type="text" className="form-control" id="max" name="max" value={max} onChange={(e)=>setMax(e.target.value)} />
                 </div>
               </div>
     
