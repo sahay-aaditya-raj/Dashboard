@@ -119,6 +119,35 @@ const EditDataComponent = ({data})=>{
         
     }
 
+    const updateName = ()=>{
+        const putData = async ()=>{
+            try{
+                const response = await fetch(`${config.server.hostname}:${config.server.port}${config.apiKeys.deviceName}`, {
+                    method: 'PUT',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    'device_id': data.device_id,
+                    'new_name': name
+                    }
+                });
+
+                console.log(data.device_id)
+                console.log(name)
+
+        
+                if (response.status===200){
+                    alert('Name changed!')
+                } else{
+                    alert('Something Went Wrong')
+                }
+            } catch{
+                alert('FrontEnd Error')
+            }
+        }
+        putData()
+    
+}
+
     return(
         <div style={{width:320}}>
         <div className='p-2 px-1  shadow rounded m-2'>
@@ -126,7 +155,7 @@ const EditDataComponent = ({data})=>{
                     <input type="text" className="form-control" 
                     value={name} 
                     onChange={(e)=>setName(e.target.value)}/>
-                    <button className="input-group-text px-2" ><img src={edit} alt="Chg"/></button>
+                    <button className="input-group-text px-2" onClick={updateName}><img src={edit} alt="Chg"/></button>
                 </div>
             <div className='px-3'>
                 <div className="input-group mb-3" >
